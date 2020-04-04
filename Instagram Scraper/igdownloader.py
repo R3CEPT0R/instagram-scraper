@@ -175,14 +175,5 @@ class ig_download:
             print(key,value)
 
 if __name__=="__main__":
-    #url='https://www.instagram.com/p/B5dhCqPnJuA/'
-    #url='https://www.instagram.com/p/B6dpZxjnVCx/'
-    #url='https://www.instagram.com/p/BXluHy5jVxV/'
-    #url='https://www.instagram.com/p/B9R6xvopnBO/'
-    #url='https://www.instagram.com/p/B99qAc9Hv0D/'
-    #url='https://www.instagram.com/p/B9pCxqsnrwN/'
-    #url='https://www.instagram.com/p/B6bLp9GnN6A/'
-    #x=ig_download()
-    #x.download_sidecar(url)
     x=ig_download()
-    x.download_all('barstoolcats','C:\\Users\\promise\\Documents\\Instagram Scraper\\Instagram Scraper')
+    x.download_all('<desired account username here>','<path to download>','<likes (optional)>')
