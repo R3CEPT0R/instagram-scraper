@@ -31,7 +31,7 @@ Selenium, requests, textwrap, urllib, time, random, json, bs4, os
 (Basic python knowledge and usage of chrome web browser is assumed)
 First download code, open with favorite IDE, and install dependencies.
 - To use downloader, simply open igdownloader.py, specify methods, and run.
-- To use automator, open igActions.py, download Chrome <a href="https://chromedriver.chromium.org/downloads" target="_blank">Webdriver</a>, specify download path of webdriver on line 14, account login information on lines 222 and 223, which methods you want to use, and run 
+- To use automator, open igActions.py, download Chrome <a href="https://chromedriver.chromium.org/downloads">Webdriver</a>, specify download path of webdriver on line 14, account login information on lines 222 and 223, which methods you want to use, and run 
 ####Downloader
 - **download(url)** -> downloads individual post given post url
 - **download_sidecar(url, shortcode=None, path=None)** -> Use if the post you want to download contains multiple media. Simply specify url (the others are optional)
