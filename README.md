@@ -2,9 +2,6 @@
 
 ![](https://instagram-brand.com/wp-content/uploads/2016/11/Instagram_AppIcon_Aug2017.png?w=300)
 
-![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg)
-
-
 ##Features
 
 ####Downloads
@@ -32,6 +29,7 @@ Selenium, requests, textwrap, urllib, time, random, json, bs4, os
 First download code, open with favorite IDE, and install dependencies.
 - To use downloader, simply open igdownloader.py, specify methods, and run.
 - To use automator, open igActions.py, download Chrome <a href="https://chromedriver.chromium.org/downloads">Webdriver</a>, specify download path of webdriver on line 14, account login information on lines 222 and 223, which methods you want to use, and run 
+
 ####Downloader
 - **download(url)** -> downloads individual post given post url
 - **download_sidecar(url, shortcode=None, path=None)** -> Use if the post you want to download contains multiple media. Simply specify url (the others are optional)
