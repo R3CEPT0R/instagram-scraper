@@ -150,12 +150,12 @@ class ig_download:
             return "N/A"
         try:
             item['contentLocation']['address']
+            details = item['contentLocation']['address']
+            for key, val in details.items() :
+                lst.append(val)
         except:
-            pass
+            lst.append('N/A')
 
-        details=item['contentLocation']['address']
-        for key,val in details.items():
-            lst.append(val)
         return lst
 
     def meta_data(self,url):
@@ -163,7 +163,7 @@ class ig_download:
         obj = self.parse(url)
         print("\nCollecting Data....\n")
         time.sleep(2)
-        print("Statistics:")
+        #print("Statistics:")
         meta['Caption: ']=self.get_caption(url)
         meta['Upload Date: ']=self.get_upload_date(obj)
         meta['Publisher ID: ']=self.get_publisher(obj)[0]
@@ -171,9 +171,48 @@ class ig_download:
         meta['Likes: ']=self.like_count(obj)
         meta['Comments: ']=self.comment_count(obj)
         meta['Location: ']=self.get_location(obj)
-        for key,value in meta.items():
-            print(key,value)
+        #for key,value in meta.items():
+        #    print(key,value)
+        return meta
+
+    def meta_append(self,url,file_path):
+        results=self.meta_data(url)
+        try:
+            # we just append
+            f=open(file_path,"a")
+            f.write("\n")
+            json.dump(results, f)
+            f.close()
+        except:
+            print("Looks like there was an error, did you specify the right path?")
+            return
+        print("Done")
+
+    def meta_create(self,url,path=None):
+        results=self.meta_data(url)
+        if (os.path.isdir(path)):
+            path=os.path.join(path,"new_data.txt")
+            f=open(path,"w")
+        else:
+            f=open("new_data.txt","w")
+        json.dump(results, f)
+        f.close()
+
+
 
 if __name__=="__main__":
+    #url='https://www.instagram.com/p/B5dhCqPnJuA/'
+    #url='https://www.instagram.com/p/B6dpZxjnVCx/'
+    #url='https://www.instagram.com/p/BXluHy5jVxV/'
+    #url='https://www.instagram.com/p/B9R6xvopnBO/'
+    #url='https://www.instagram.com/p/B99qAc9Hv0D/'
+    #url='https://www.instagram.com/p/B9pCxqsnrwN/'
+    #url='https://www.instagram.com/p/B6bLp9GnN6A/'
+    #x=ig_download()
+    #x.download_sidecar(url)
+    #x=ig_download()
+    #x.download_all('barstoolcats','C:\\Users\\promise\\Documents\\Instagram Scraper\\Instagram Scraper')
     x=ig_download()
-    x.download_all('<desired account username here>','<path to download>','<likes (optional)>')
+    #x.meta_data('https://www.instagram.com/p/B_VIRVnJMvt/')
+    x.meta_create('https://www.instagram.com/p/B_VIRVnJMvt/','<enter path to create file or leave empty>')
+    #x.meta_append('https://www.instagram.com/p/B_VIRVnJMvt/','<enter full file path here>')
