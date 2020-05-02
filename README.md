@@ -37,7 +37,7 @@ First download code, open with favorite IDE, and install dependencies.
 - **download_all(username, path, likes (optional))** -> downloads all media from a user. If likes are specified, then all posts which have at least that amount of likes/views will be downloaded. If not specified, then all media is downloaded by default
 - **meta_data(url)** -> gets metadata from a given instagram post
 - **meta_append(url,path)** -> appends metadata to an existing file (must specify path)
-- **meta_create(url,dir_path=None) -> creates a new file in specified directory and saves metadata to it. If no path is supplied, a new file is created in the current working directory by default.
+- **meta_create(url,dir_path=None)** -> creates a new file in specified directory and saves metadata to it. If no path is supplied, a new file is created in the current working directory by default.
 #### Automator
 - **like_hashtag(hashtag)** -> likes posts containing given hashtag
 - **get_user_followers(username)** -> returns list of users following a certain account
