@@ -1,5 +1,6 @@
 import requests
 import textwrap
+import copy
 import urllib.request
 import time
 import json
@@ -54,10 +55,15 @@ class ig_download:
                 handler.write(data)
             self.downloads+=1
 
-    def download_all(self,username,directory,likes=None):
+    def download_all(self,username,directory,likes=None,save=False):
         "Download all media from a user account"
         url='https://www.instagram.com/'+username+'/'
         directory+='\\'+username
+        if (save == True) :
+            save_path = copy.copy(directory)
+            file = username + '.txt'
+            save_x=os.path.join(save_path, file)
+
         r = requests.get(url + '?__a=1')
         user_id=r.json()['graphql']['user']['id']
         end_cursor=''
@@ -76,7 +82,12 @@ class ig_download:
                 file_name = edge['node']['taken_at_timestamp']
                 download_path = f"{directory}\\{file_name}.png"
                 type=edge['node']['__typename']
-                print(edge)
+                if(save==True):
+                    with open(save_x,'a',encoding='utf-8') as f:
+                        print(edge,file=f)
+                        print(edge)
+                else:
+                    print(edge)
                 if type=='GraphImage':
                     if likes!=None:
                         if edge['node']['edge_liked_by']['count']>=likes:
@@ -198,8 +209,6 @@ class ig_download:
         json.dump(results, f)
         f.close()
 
-
-
 if __name__=="__main__":
     #url='https://www.instagram.com/p/B5dhCqPnJuA/'
     #url='https://www.instagram.com/p/B6dpZxjnVCx/'
@@ -211,8 +220,8 @@ if __name__=="__main__":
     #x=ig_download()
     #x.download_sidecar(url)
     #x=ig_download()
-    #x.download_all('barstoolcats','C:\\Users\\promise\\Documents\\Instagram Scraper\\Instagram Scraper')
-    x=ig_download()
+    #x=ig_download()
     #x.meta_data('https://www.instagram.com/p/B_VIRVnJMvt/')
-    x.meta_create('https://www.instagram.com/p/B_VIRVnJMvt/','<enter path to create file or leave empty>')
+    #x.meta_create('https://www.instagram.com/p/B_VIRVnJMvt/','<enter path to create file or leave empty>')
     #x.meta_append('https://www.instagram.com/p/B_VIRVnJMvt/','<enter full file path here>')
+    x=ig_download()
