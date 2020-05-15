@@ -34,7 +34,7 @@ First download code, open with favorite IDE, and install dependencies.
 #### Downloader
 - **download(url)** -> downloads individual post given post url
 - **download_sidecar(url, shortcode=None, path=None)** -> Use if the post you want to download contains multiple media. Simply specify url (the others are optional)
-- **download_all(username, path, likes (optional))** -> downloads all media from a user. If likes are specified, then all posts which have at least that amount of likes/views will be downloaded. If not specified, then all media is downloaded by default
+- **download_all(username, path, likes (optional),save=<True or False>)** -> downloads all media from a user. If likes are specified, then all posts which have at least that amount of likes/views will be downloaded. If not specified, then all media is downloaded by default. If save is set to True, all meta data from all posts will be scraped and appended to a .txt file within the newly created directory. By default, it is set to False.
 - **meta_data(url)** -> gets metadata from a given instagram post
 - **meta_append(url,path)** -> appends metadata to an existing file (must specify path)
 - **meta_create(url,dir_path=None)** -> creates a new file in specified directory and saves metadata to it. If no path is supplied, a new file is created in the current working directory by default.
